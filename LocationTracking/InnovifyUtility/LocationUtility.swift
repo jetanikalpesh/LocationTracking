@@ -203,11 +203,9 @@ extension LocationUtility {
         let fetchRequest = NSFetchRequest<EntityLocation>(entityName: "EntityLocation")
         do {
             let objects = try appDelegate.persistentContainer.viewContext.fetch(fetchRequest)
-            let locations : [EntityLocation]? = objects as! [EntityLocation]
-            if locations != nil{
-                for location in locations! {
-                    print("session > \(location.session_time),time > \(location.captured_time), speed > \(location.captured_speed), average > \(location.average_speed)")
-                }
+            let locations : [EntityLocation] = objects
+            for location in locations {
+                print("session > \(location.session_time),time > \(location.captured_time), speed > \(location.captured_speed), average > \(location.average_speed)")
             }
         }
         catch {
